@@ -1,6 +1,5 @@
 #  AI Flight Delay Predictor  
-A full-stack + machine learning system that predicts whether a flight will be delayed using real aviation datasets and ML models.
-
+This repository contains the machine learning engine + API layer for predicting whether a flight will be delayed using real aviation data.
 
 
 ---
@@ -56,13 +55,27 @@ performs:
 
 ---
 
-## 🖥️ Backend
+🔁 Backend API Endpoints
+✔ GET /
 
-Using **FastAPI**:
-- `/predict` API endpoint  
-- Returns delay probability & prediction  
-- Connects with model.pkl  
+Health check
+Returns message confirming API is running.
 
+✔ GET /metadata
+
+Returns dropdown values for frontend:
+
+Airlines
+
+Origin airports
+
+Destination airports
+
+City mappings
+
+✔ POST /predict
+
+Accepts a JSON request:
 ---
 
 ## 🎨 Frontend 
@@ -76,6 +89,11 @@ Using **React**:
 Machine Learning Model
 
 - XGBoost (best performance for tabular prediction)
+
+  Frontend Link
+
+👉 Frontend Repo:
+https://github.com/IshaKumari22/ai-flight-delay-predictor-frontend
 
 Output
 
