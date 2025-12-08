@@ -81,4 +81,8 @@ Output
 
 -Binary target: delayed or not
 - Probability score 0–1
+<img width="847" height="864" alt="Screenshot 2025-12-07 223016" src="https://github.com/user-attachments/assets/b98faeb4-f229-4da7-88c3-2175c4ec0a70" />
+<img width="714" height="869" alt="Screenshot 2025-12-07 223248" src="https://github.com/user-attachments/assets/3717e683-8b03-4f41-b16a-b1d7e1d75b92" />
+<img width="740" height="871" alt="Screenshot 2025-12-07 223348" src="https://github.com/user-attachments/assets/f0f968b2-ff1a-45fa-b923-a6c96f5ecf1e" />
+
 
