@@ -90,6 +90,28 @@ Machine Learning Model
 
 - XGBoost (best performance for tabular prediction)
 
+
+⚙️ How to Run Backend Locally
+Step 1 — Create environment
+python -m venv venv
+
+Step 2 — Activate
+
+Windows:
+
+venv\Scripts\activate
+
+
+
+Step 3 — Install dependencies
+pip install -r requirements.txt
+
+Step 4 — Run API server
+uvicorn backend.main:app --reload
+
+
+📌 Backend runs on http://127.0.0.1:8000
+
   Frontend Link
 
 👉 Frontend Repo:
