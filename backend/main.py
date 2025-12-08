@@ -9,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -59,20 +59,27 @@ def predict(input: FlightInput):
 
 @app.get("/metadata")
 def metadata():
-    raw = pd.read_csv(BASE / "data" / "processed" / "train_clean_city.csv")
+    try:
+        df_path = BASE / "data" / "processed" / "train_clean_city.csv"
 
-    
-    route_map = {
-        f"{o},{d}": dist
-        for (o, d), dist in raw.groupby(["ORIGIN", "DEST"])["DISTANCE"].first().items()
-    }
+        if not df_path.exists():
+            return {"error": "Processed dataset not found on server"}
 
-    return {
-        "airlines": list(raw["AIRLINE"].unique()),
-        "origins": list(raw["ORIGIN"].unique()),
-        "destinations": list(raw["DEST"].unique()),
-        "origin_cities": list(raw["ORIGIN_CITY"].unique()),
-        "dest_cities": list(raw["DEST_CITY"].unique()),
-        "route_distance": route_map,  
-    }
+        raw = pd.read_csv(df_path)
 
+        route_map = {
+            f"{o},{d}": dist
+            for (o, d), dist in raw.groupby(["ORIGIN", "DEST"])["DISTANCE"].first().items()
+        }
+
+        return {
+            "airlines": list(raw["AIRLINE"].unique()),
+            "origins": list(raw["ORIGIN"].unique()),
+            "destinations": list(raw["DEST"].unique()),
+            "origin_cities": list(raw["ORIGIN_CITY"].unique()),
+            "dest_cities": list(raw["DEST_CITY"].unique()),
+            "route_distance": route_map,
+        }
+
+    except Exception as e:
+        return {"error": f"Metadata load failed: {str(e)}"}
