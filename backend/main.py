@@ -9,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,7 +33,7 @@ class FlightInput(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Flight Delay Predictor API running 🚀"}
+    return {"message": "Flight Delay Predictor API running "}
 
 @app.post("/predict")
 def predict(input: FlightInput):
@@ -59,13 +59,24 @@ def predict(input: FlightInput):
 
 @app.get("/metadata")
 def metadata():
+    
     try:
-        df_path = BASE / "data" / "processed" / "train_clean_city.csv"
+        df_path = BASE / "data" / "processed" / "metadata_small.csv"
 
         if not df_path.exists():
-            return {"error": "Processed dataset not found on server"}
+            return {
+                "error": "Metadata not found on server",
+                "fix": "Upload metadata_small.csv under data/processed/"
+            }
 
         raw = pd.read_csv(df_path)
+
+        required_cols = [
+            "AIRLINE", "ORIGIN", "DEST", "ORIGIN_CITY", "DEST_CITY", "DISTANCE"
+        ]
+
+        if not all(col in raw.columns for col in required_cols):
+            return {"error": "Metadata CSV missing required columns"}
 
         route_map = {
             f"{o},{d}": dist
