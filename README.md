@@ -1,11 +1,11 @@
-# ✈️ AI Flight Delay Predictor  
+#  AI Flight Delay Predictor  
 A full-stack + machine learning project that predicts whether a flight will be delayed based on real aviation data, weather, distance, airline, and more.
 
 This project is currently in **Phase 1: Data Engineering & Cleaning**.
 
 ---
 
-## 📌 Project Status  
+##  Project Status  
 **Completed so far:**
 - Project setup & folder structure  
 - Kaggle API configuration  
@@ -99,10 +99,4 @@ Using **React**:
 
 ---
 
-## 🔧 Installation
-
-```bash
-git clone https://github.com/yourusername/ai-flight-delay-predictor.git
-cd ai-flight-delay-predictor
-pip install -r requirements.txt
 

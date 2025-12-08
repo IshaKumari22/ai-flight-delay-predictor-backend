@@ -61,7 +61,7 @@ def predict(input: FlightInput):
 def metadata():
     raw = pd.read_csv(BASE / "data" / "processed" / "train_clean_city.csv")
 
-    # Create route → distance mapping with string keys
+    
     route_map = {
         f"{o},{d}": dist
         for (o, d), dist in raw.groupby(["ORIGIN", "DEST"])["DISTANCE"].first().items()
@@ -73,6 +73,6 @@ def metadata():
         "destinations": list(raw["DEST"].unique()),
         "origin_cities": list(raw["ORIGIN_CITY"].unique()),
         "dest_cities": list(raw["DEST_CITY"].unique()),
-        "route_distance": route_map,  # 🚀 NOW JSON SAFE!
+        "route_distance": route_map,  
     }
 

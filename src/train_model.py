@@ -13,7 +13,7 @@ processed_data = Base / "data" / "processed" / "train_clean_city.csv"
 model_file = Base / "models" / "model.pkl"
 encoder_file = Base / "models" / "encoders.pkl"
 
-print("📌 Loading raw dataset...")
+print("Loading raw dataset...")
 df = pd.read_csv(raw_data)
 
 required_cols = [
@@ -47,7 +47,7 @@ y = df["is_delayed"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-print("📌 Training XGBoost model...")
+print(" Training XGBoost model...")
 model = XGBClassifier(n_estimators=200, max_depth=6, learning_rate=0.1, random_state=42)
 model.fit(X_train, y_train)
 
