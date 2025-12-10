@@ -1,6 +1,6 @@
 venv/
 data/raw/*
 data/processed/*
+!data/processed/metadata_small.csv
 __pycache__/
 *.zip
-
