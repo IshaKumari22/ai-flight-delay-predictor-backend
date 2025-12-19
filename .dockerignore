@@ -1,0 +1,17 @@
+venv/
+data/raw/*
+data/processed/*
+!data/processed/metadata_small.csv
+
+__pycache__/
+*.pyc
+*.pyo
+
+.git/
+.gitignore
+
+*.zip
+*.log
+.env
+.DS_Store
+Thumbs.db
